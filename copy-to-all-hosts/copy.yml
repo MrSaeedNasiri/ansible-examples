@@ -1,0 +1,16 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: copy tor config from local to all hosts
+      register: copy
+      copy:
+        src: ~/torrc
+        dest: /etc/tor/torrc
+
+    - name: restart tor service
+      systemd:
+        name: tor
+        state: restarted
+
+    - debug: var=copy
