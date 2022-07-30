@@ -44,3 +44,15 @@ if you want to restart service after copy config, you see the second task, other
 dont forget config ansibe:
 
 `/etc/ansible/hosts`
+
+### log:
+
+if you dont't want to see the log, you can comment out the lines
+
+```YAML
+    register: copy
+```
+
+```YAML
+    - debug: var=copy
+```
